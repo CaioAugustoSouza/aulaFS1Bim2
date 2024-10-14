@@ -3,7 +3,24 @@ document.addEventListener("DOMContentLoaded", function(){
     var btnGravar = document.getElementById("btnGravar");
 
     btnGravar.addEventListener("click", gravarProduto);
+
+    var inputImg = document.getElementById('inputImagem');
+
+    inputImg.addEventListener('change', exibirPrevia)
+
 })
+
+function exibirPrevia(){
+    let imagem = document.getElementById('inputImagem').files[0];
+    let imgPrevia = document.getElementById('imgPrevia');
+
+    let obgImg = URL.createObjectURL(imagem);
+
+    imgPrevia.setAttribute('src',obgImg);
+
+    document.getElementById('previaImagem').style['display'] = 'block'
+}   
+
 
 function gravarProduto() {
 
