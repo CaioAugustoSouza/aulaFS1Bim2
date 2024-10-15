@@ -27,10 +27,10 @@ class ProdutoController {
         var ok = true;
         if(req.body.codigo != "" && req.body.nome != "" && 
         req.body.quantidade != "" && req.body.quantidade  != '0' && 
-        req.body.marca != '0' && req.body.categoria  != '0' && req.body.valorUnitario) {
+        req.body.marca != '0' && req.body.categoria  != '0' && req.body.valor && req.file!=null) {
             let produto = new ProdutoModel(0, req.body.codigo, 
                 req.body.nome, req.body.quantidade, 
-                req.body.categoria, req.body.marca, "", "", req.body.valorUnitario);
+                req.body.categoria, req.body.marca, "", "", req.body.valor, req.file.buffer);
 
             ok = await produto.gravar();
         }

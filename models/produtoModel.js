@@ -49,9 +49,20 @@ class ProdutoModel {
 
     async gravar() {
         if(this.#produtoId == 0){
-            let sql = "insert into tb_produto (prd_cod, prd_nome, prd_quantidade, cat_id, mar_id, prd_valorunitario, prd_imagem) values (?, ?, ?, ?, ?,?,?)";
-
-            let valores = [this.#produtoCodigo, this.#produtoNome, this.#produtoQuantidade, this.#categoriaId, this.#marcaId];
+            const sql = `
+            INSERT INTO tb_produto 
+            (prd_cod, prd_nome, prd_quantidade, cat_id, mar_id, prd_valorunitario, prd_imagem) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)`;
+    
+        const valores = [
+            this.#produtoCodigo,
+            this.#produtoNome,
+            this.#produtoQuantidade,
+            this.#categoriaId,
+            this.#marcaId,
+            this.#produtoValorUnitario,
+            this.#produtoImagem
+        ];
 
             return await conexao.ExecutaComandoNonQuery(sql, valores);
         }
